@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>daborey Image URL Generator</title>
+    <style>
+        .generator {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 5px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 70%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .generator button {
+            background-color: #4B7B91;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #36596c;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .headings-style {
+            color: #333;
+            font-size: 22px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f00;
+            font-weight: bold;
+        }
+
+        #originalURL {
+            width: 80%;
+        }
+
+        #altText {
+            width: 70%;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        #directRawURL {
+            width: 66%;
+        }
+
+        #directHTMLURL {
+            width: 60%;
+        }
+
+        #thumbnailWidth {
+            width: 28%;
+        }
+
+        #thumbnailHeight {
+            width: 28%;
+        }
+
+        #thumbnailRawURL {
+            width: 66%;
+        }
+
+        #thumbnailHTMLURL {
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="lnav">
+    <ul>
+        <li class="nav-li-logo"><a href="/"><img src="https://www.pexels.com/photo/landscape-photography-of-green-field-under-blue-sky-5312342/" alt="daborey logo" height="33"></a></li>
+        <li class="nav-li-text"><a href="/blog">Blog</a></li>
+        <li class="nav-li-text"><a class="btnactive" href="/tools/">Tools</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="center-container">
+        <div class="container">
+            <nav>
+                <div style="display: flex; justify-content: space-between;">
+                    <ul class="lenta-breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/">Tools</a></li>
+                        <li>Google Drive Image URL Generator</li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="main">
+                <article>
+                    <h1 style="font-size:30px;">daborey Image URL Generator: Seamless Image Sharing and Embedding</h1>
+                    <div class="cont">
+                        <h2>About</h2>
+                        <p>The daborey Image URL Generator simplifies the process of converting your Google Drive image links into direct, shareable URLs optimized for download, websites, applications, and digital projects.</p>
+
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Instantly convert Google Drive sharing links to publicly accessible image URLs</li>
+                            <li>Create resized image thumbnails with precise width and height specifications</li>
+                            <li>Add descriptive alt text for improved SEO and screen reader compatibility</li>
+                            <li>Updated December 4, 2024: Latest compatibility with Google Drive link formats</li>
+                        </ul>
+
+                        <h2>Image URL Generator</h2>
+
+                        <div class="generator">
+                            <!-- Input Fields for Image URL and Alt Text -->
+                            <input id="googleDriveURL" oninput="generateImageURL()" placeholder="Enter Google Drive Image URL" type="text">
+                            <input id="altText" oninput="generateImageURL()" placeholder="Alt Text (Optional)" type="text">
+                            <button id="generateButton" onclick="generateImageURL()">Generate Image URL</button>
+
+                            <div class="error" id="errorMessage">&nbsp;</div>
+
+                            <hr>
+                            <div class="output">
+                                <p class="headings-style">Direct Image URL</p>
+                                <div>
+                                    <label for="directRawURL">Raw URL:</label>
+                                    <input id="directRawURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('directRawURL')">Copy</button>
+                                </div>
+
+                                <div>
+                                    <label for="directHTMLURL">HTML Version:</label>
+                                    <input id="directHTMLURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('directHTMLURL')">Copy</button>
+                                </div>
+                            </div>
+
+                            <div class="output">
+                                <p class="headings-style">Thumbnail Image URL</p>
+                                <input id="thumbnailWidth" oninput="generateImageURL()" placeholder="Width (e.g., 600)" type="number">
+                                <input id="thumbnailHeight" oninput="generateImageURL()" placeholder="Height (e.g., 600)" type="number">
+                                <div>
+                                    <label for="thumbnailRawURL">Raw URL:</label>
+                                    <input id="thumbnailRawURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('thumbnailRawURL')">Copy</button>
+                                </div>
+
+                                <div>
+                                    <label for="thumbnailHTMLURL">HTML Version:</label>
+                                    <input id="thumbnailHTMLURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('thumbnailHTMLURL')">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="line-height:1.5em;">
+                            <section id="notes">
+                                <h2>Notes</h2>
+
+                                <ul>
+                                    <li>Make sure your file's visibility in Google Drive is set to "Anyone with the link." This ensures that the image is accessible when generating image URLs.</li>
+                                    <li>This tool is designed for uploaded images in Google Drive, not for documents or other file types. It may not work as intended for non-image files.</li>
+                                    <li>Generated image URLs are suitable for embedding in websites, blogs, and applications, or sharing with others to view your images.</li>
+                                    <li>When using the thumbnail link with adjustable dimensions, ensure that you specify the desired width and height for the thumbnail in the provided input fields.</li>
+                                    <li>Alt text is an important accessibility feature that should be added to HTML image versions to provide meaningful descriptions for users with disabilities.</li>
+                                </ul>
+                            </section>
+
+                            <section id="how-to-get-url">
+                                <h2>How to Get Your Image Sharing URL in Google Drive</h2>
+
+                                <p>Before using the daborey Image URL Generator, you need to obtain the sharing URL of your image in Google Drive. Here's a step-by-step guide on how to do it:</p>
+
+                                <h3>Step 1: Upload Your Image to Google Drive</h3>
+                                <p>If your image is not already on Google Drive, start by uploading it. You can do this by opening Google Drive and clicking the "+ New" button, then selecting "File upload" to choose your image from your device. Once it's uploaded, you can proceed.</p>
+
+                                <h3>Step 2: Share the Image</h3>
+                                <p>After your image is in Google Drive, right-click on it and select "Share." A sharing dialog will appear. Click the "Copy link" option.</p>
+                                <p><img alt="How to share Google Drive image guide" src="https://www.pexels.com/photo/green-mountain-covered-with-clouds-5762587/" style="width: 500px; height: 323px;"></p>
+
+                                <h3>Step 3: Adjust Sharing Settings (if necessary)</h3>
+                                <p>By default, Google Drive provides restricted access to your files. To ensure the image is accessible, click on the sharing link you copied, and set the sharing settings to "Anyone with the link." This will allow anyone with the link to view the image.</p>
+                                <p><img alt="How to change access of image on Google Drive" src="https://www.pexels.com/photo/green-mountain-covered-with-clouds-5762587/" style="width: 400px; height: 402px;"></p>
+
+                                <h3>Step 4: Copy the URL</h3>
+                                <p>Once your sharing settings are adjusted, copy the URL from the address bar of your web browser. This URL is the one you'll use in the daborey Image URL Generator to obtain direct image URLs or thumbnail links with adjustable dimensions.</p>
+                            </section>
+
+                            <section id="how-it-works">
+                                <h2 level="2">How It Works</h2>
+
+                                <h3 level="3">Direct Image URL Conversion</h3>
+                                <p>Convert standard Google Drive sharing links to direct image URLs:</p>
+
+                                <p><strong>Original Link:</strong></p>
+                                <p><code>https://drive.google.com/file/d/1p6H6BNwufh7svA2RxnHBz1bqZPaZ4BMJ/view?usp=sharing</code></p>
+
+                                <p><strong>Generated Direct URL:</strong></p>
+                                <p><code>https://lh3.googleusercontent.com/d/1p6H6BNwufh7svA2RxnHBz1bqZPaZ4BMJ</code></p>
+
+                                <h3 level="3">Thumbnail Generation</h3>
+                                <p>Create custom-sized image thumbnails with ease:</p>
+
+                                <p><strong>Original Link:</strong></p>
+                                <p><code>https://drive.google.com/file/d/1p6H6BNwufh7svA2RxnHBz1bqZPaZ4BMJ/view?usp=sharing</code></p>
+
+                                <p><strong>Thumbnail URL:</strong></p>
+                                <p><code>https://lh3.googleusercontent.com/d/1p6H6BNwufh7svA2RxnHBz1bqZPaZ4BMJ=w600-h600</code></p>
+                            </section>
+
+                            <!-- Add more sections as needed -->
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="container">
+            </div>
+        </div>
+    </div>
+
+<footer>
+    <div class="button buttonSm">
+        <a href="https://github.com/daborey">
+            <span class="right"></span><span class="left"></span>
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

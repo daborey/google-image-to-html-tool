@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Easily convert Google image links into HTML <img> tags with our online tool. Perfect for developers, web designers, and content creators who need quick and reliable image embedding solutions.">
+    <meta name="keywords"
+        content="Google image to HTML, convert image link to img tag, image embed tool, online HTML image converter, image link generator, website development tool, web design resources">
+    <meta name="author" content="Da Borey">
+    <meta name="robots" content="index, follow">
+    <title>Google Image to HTML Converter | Fast & Easy Image Embedding</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        .lnav ul {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .lnav li {
+            margin-right: 20px;
+        }
+
+        .lnav a {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .lnav a.btnactive {
+            color: #ffd700;
+        }
+
+        /* Form and Generator */
+        .generator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4b7b91;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #36596c;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .headings-style {
+            font-size: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .lnav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .lnav li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .generator {
+                padding: 15px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            button {
+                width: 100%;
+                font-size: 14px;
+            }
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lnav">
+        <ul>
+            <li class="nav-li-logo"><a href="/"><img
+                        src="https://www.pexels.com/photo/landscape-photography-of-green-field-under-blue-sky-5312342/"
+                        alt="daborey logo" height="33"></a></li>
+            <li class="nav-li-text"><a href="/blog">Blog</a></li>
+            <li class="nav-li-text"><a class="btnactive" href="/tools/">Tools</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="center-container">
+            <nav>
+                <div style="display: flex; justify-content: space-between;">
+                    <ul class="lenta-breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/">Tools</a></li>
+                        <li>Google Drive Image URL Generator</li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="main">
+                <article>
+                    <h1>daborey Image URL Generator: Seamless Image Sharing and Embedding</h1>
+                    <div class="cont">
+                        <h2>About</h2>
+                        <p>The daborey Image URL Generator simplifies the process of converting your Google Drive image
+                            links into direct, shareable URLs optimized for download, websites, applications, and
+                            digital projects.</p>
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Instantly convert Google Drive sharing links to publicly accessible image URLs</li>
+                            <li>Create resized image thumbnails with precise width and height specifications</li>
+                            <li>Add descriptive alt text for improved SEO and screen reader compatibility</li>
+                            <li>Updated December 4, 2024: Latest compatibility with Google Drive link formats</li>
+                        </ul>
+
+                        <h2>Image URL Generator</h2>
+                        <div class="generator">
+                            <!-- Input Fields for Image URL and Alt Text -->
+                            <input id="googleDriveURL" placeholder="Enter Google Drive Image URL" type="text">
+                            <input id="altText" placeholder="Alt Text (Optional)" type="text">
+                            <button id="generateButton" onclick="generateImageURL()">Generate Image URL</button>
+
+                            <div class="error" id="errorMessage">&nbsp;</div>
+
+                            <hr>
+                            <div class="output">
+                                <p class="headings-style">Direct Image URL</p>
+                                <div>
+                                    <label for="directRawURL">Raw URL:</label>
+                                    <input id="directRawURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('directRawURL')">Copy</button>
+                                </div>
+
+                                <div>
+                                    <label for="directHTMLURL">HTML Version:</label>
+                                    <input id="directHTMLURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('directHTMLURL')">Copy</button>
+                                </div>
+                            </div>
+
+                            <div class="output">
+                                <p class="headings-style">Thumbnail Image URL</p>
+                                <input id="thumbnailWidth" placeholder="Width (e.g., 600)" type="number">
+                                <input id="thumbnailHeight" placeholder="Height (e.g., 600)" type="number">
+                                <div>
+                                    <label for="thumbnailRawURL">Raw URL:</label>
+                                    <input id="thumbnailRawURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('thumbnailRawURL')">Copy</button>
+                                </div>
+
+                                <div>
+                                    <label for="thumbnailHTMLURL">HTML Version:</label>
+                                    <input id="thumbnailHTMLURL" readonly="readonly" type="text">
+                                    <button onclick="copyToClipboard('thumbnailHTMLURL')">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Da Borey | <a href="https://github.com/daborey" target="_blank">GitHub</a></p>
+    </footer>
+    <script>
+        function generateImageURL() {
+            const originalURL = document.getElementById("googleDriveURL").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const validURL = isValidGoogleDriveURL(originalURL);
+
+            if (!validURL) {
+                errorMessage.textContent = "Invalid Google Drive URL. Please enter a valid URL.";
+                disableOutputFields();
+                return;
+            }
+
+            errorMessage.textContent = "";
+            enableOutputFields();
+
+            const fileID = getDriveFileID(originalURL);
+            const resourceKey = getResourceKey(originalURL);
+            const altText = getAltText();
+
+            const baseURL = `https://lh3.googleusercontent.com/d/${fileID}`;
+            const resourceParam = resourceKey ? `?resourcekey=${resourceKey}` : "";
+
+            const directRawURL = `${baseURL}${resourceParam}`;
+            const directHTMLURL = `<img src="${directRawURL}" alt="${altText}">`;
+
+            document.getElementById("directRawURL").value = directRawURL;
+            document.getElementById("directHTMLURL").value = directHTMLURL;
+
+            const thumbnailWidth = document.getElementById("thumbnailWidth").value || 600;
+            const thumbnailHeight = document.getElementById("thumbnailHeight").value || 600;
+
+            const thumbnailRawURL = `${baseURL}=w${thumbnailWidth}-h${thumbnailHeight}-p-k-no-nd`;
+            const thumbnailHTMLURL = `<img src="${thumbnailRawURL}" alt="${altText}">`;
+
+            document.getElementById("thumbnailRawURL").value = thumbnailRawURL;
+            document.getElementById("thumbnailHTMLURL").value = thumbnailHTMLURL;
+        }
+
+        function isValidGoogleDriveURL(url) {
+            const pattern = /^https:\/\/drive\.google\.com\/.*$/;
+            return pattern.test(url);
+        }
+
+        function getDriveFileID(url) {
+            const regex = /\/d\/(.*?)(\/|$)/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        function getResourceKey(url) {
+            const regex = /\?resourcekey=([a-zA-Z0-9-_]+)/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        function getAltText() {
+            return document.getElementById("altText").value || "Google Drive Image";
+        }
+
+        function disableOutputFields() {
+            document.getElementById("directRawURL").disabled = true;
+            document.getElementById("directHTMLURL").disabled = true;
+            document.getElementById("thumbnailRawURL").disabled = true;
+            document.getElementById("thumbnailHTMLURL").disabled = true;
+        }
+
+        function enableOutputFields() {
+            document.getElementById("directRawURL").disabled = false;
+            document.getElementById("directHTMLURL").disabled = false;
+            document.getElementById("thumbnailRawURL").disabled = false;
+            document.getElementById("thumbnailHTMLURL").disabled = false;
+        }
+
+        function copyToClipboard(elementId) {
+            const copyText = document.getElementById(elementId);
+            copyText.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+
+</html>

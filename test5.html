@@ -1,0 +1,95 @@
+<script>
+    function generateImageURL() {
+        const originalURL = document.getElementById("originalURL").value;
+        const errorMessage = document.getElementById("errorMessage");
+        const validURL = isValidGoogleDriveURL(originalURL);
+
+        if (!validURL) {
+            errorMessage.textContent = "Invalid Google Drive URL. Please enter a valid URL.";
+            disableOutputFields();
+            return;
+        }
+
+        errorMessage.textContent = "";
+        enableOutputFields();
+
+        const fileID = getDriveFileID(originalURL);
+        const resourceKey = getResourceKey(originalURL);
+        const altText = getAltText();
+
+        const baseURL = `https://lh3.googleusercontent.com/d/${fileID}`;
+        const resourceParam = resourceKey ? `?resourcekey=${resourceKey}` : "";
+
+        const directRawURL = `${baseURL}${resourceParam}`;
+        const directHTMLURL = `<img src="${directRawURL}" alt="${altText}">`;
+
+        document.getElementById("directRawURL").value = directRawURL;
+        document.getElementById("directHTMLURL").value = directHTMLURL;
+
+        const thumbnailWidth = document.getElementById("thumbnailWidth").value || 600;
+        const thumbnailHeight = document.getElementById("thumbnailHeight").value || 600;
+
+        const thumbnailRawURL = `${baseURL}=w${thumbnailWidth}-h${thumbnailHeight}${resourceParam}`;
+        const thumbnailHTMLURL = `<img src="${thumbnailRawURL}" alt="${altText}">`;
+
+        document.getElementById("thumbnailRawURL").value = thumbnailRawURL;
+        document.getElementById("thumbnailHTMLURL").value = thumbnailHTMLURL;
+    }
+
+    function getDriveFileID(url) {
+        const match = /\/file\/d\/(.+?)\//.exec(url);
+        return match ? match[1] : null;
+    }
+
+    function getResourceKey(url) {
+        const match = /resourcekey=([^&]+)/.exec(url);
+        return match ? match[1] : null;
+    }
+
+    function getAltText() {
+        return document.getElementById("altText").value;
+    }
+
+function copyToClipboard(id) {
+    const copyText = document.getElementById(id);
+
+    // Create a temporary text area for copying
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = copyText.value;
+    document.body.appendChild(tempTextArea);
+
+    tempTextArea.select();
+    const success = document.execCommand("copy");
+    document.body.removeChild(tempTextArea);
+
+    // Update button text to indicate success
+    const button = copyText.nextElementSibling;
+    if (success) {
+        button.textContent = "Copied!";
+    } else {
+        button.textContent = "Failed to copy";
+    }
+
+    setTimeout(() => {
+        button.textContent = "Copy";
+    }, 2000);
+}
+
+    function isValidGoogleDriveURL(url) {
+        return /https:\/\/drive\.google\.com\/file\/d\/.+?\//.test(url);
+    }
+
+    function disableOutputFields() {
+        document.getElementById("directRawURL").value = "";
+        document.getElementById("directHTMLURL").value = "";
+        document.getElementById("thumbnailRawURL").value = "";
+        document.getElementById("thumbnailHTMLURL").value = "";
+    }
+
+    function enableOutputFields() {
+        document.getElementById("directRawURL").removeAttribute("readonly");
+        document.getElementById("directHTMLURL").removeAttribute("readonly");
+        document.getElementById("thumbnailRawURL").removeAttribute("readonly");
+        document.getElementById("thumbnailHTMLURL").removeAttribute("readonly");
+    }
+</script>
