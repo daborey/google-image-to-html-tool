@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Easily convert Google image links into HTML <img> tags with our online tool. Perfect for developers, web designers, and content creators who need quick and reliable image embedding solutions.">
+    <meta name="keywords"
+        content="Google image to HTML, convert image link to img tag, image embed tool, online HTML image converter, image link generator, website development tool, web design resources">
+    <meta name="author" content="Da Borey">
+    <meta name="robots" content="index, follow">
+    <title>Google Image to HTML Converter | Fast & Easy Image Embedding</title>
+    <style>
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lnav">
+        <ul>
+            <li class="nav-li-logo"><a href="/"><img
+                        src="https://www.pexels.com/photo/landscape-photography-of-green-field-under-blue-sky-5312342/"
+                        alt="daborey logo" height="33"></a></li>
+            <li class="nav-li-text"><a href="/blog">Blog</a></li>
+            <li class="nav-li-text"><a class="btnactive" href="/tools/">Tools</a></li>
+            <li class="nav-li-text"><a href="javascript:void(0)" id="donationLink">Donation</a></li>
+        </ul>
+    </div>
+
+    <!-- Modal for Donation Barcode -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Donate to Support Us</h2>
+            <img src="https://lh3.googleusercontent.com/d/1nEGKR6GgwaBoOlA6T1OfvT_aws9MFyAY" alt="Donation Barcode" style="width: 100%; max-width: 400px;">
+            <p>Scan the barcode to donate!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="center-container">
+            <nav>
+                <div style="display: flex; justify-content: space-between;">
+                    <ul class="lenta-breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/tools/">Tools</a></li>
+                        <li>Google Drive Image URL Generator</li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="main">
+                <article>
+                    <h1>daborey Image URL Generator: Seamless Image Sharing and Embedding</h1>
+                    <div class="cont">
+                        <h2>About</h2>
+                        <p>The daborey Image URL Generator simplifies the process of converting your Google Drive image
+                            links into direct, shareable URLs optimized for download, websites, applications, and
+                            digital projects.</p>
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Instantly convert Google Drive sharing links to publicly accessible image URLs</li>
+                            <li>Create resized image thumbnails with precise width and height specifications</li>
+                            <li>Add descriptive alt text for improved SEO and screen reader compatibility</li>
+                            <li>Updated December 4, 2024: Latest compatibility with Google Drive link formats</li>
+                        </ul>
+                        <!-- Image URL Generator Form -->
+
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Da Borey | <a href="https://github.com/daborey" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script>
+        // Donation Modal
+        const donationLink = document.getElementById("donationLink");
+        const donationModal = document.getElementById("donationModal");
+        const closeModal = document.getElementById("closeModal");
+
+        // Open Modal
+        donationLink.onclick = function() {
+            donationModal.style.display = "block";
+        }
+
+        // Close Modal
+        closeModal.onclick = function() {
+            donationModal.style.display = "none";
+        }
+
+        // Close Modal if user clicks anywhere outside of it
+        window.onclick = function(event) {
+            if (event.target == donationModal) {
+                donationModal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
