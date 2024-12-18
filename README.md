@@ -2,7 +2,7 @@
 
 This project allows you to easily convert Google Drive image links into HTML `<img>` tags. It's a simple tool perfect for developers, web designers, and content creators who need quick and reliable image embedding solutions.
 
-[Visit the Live Tool](https://daborey.github.io/google-image-to-html-tool/)
+[Visit the Live Tool https://daborey.github.io/google-image-to-html-tool](https://daborey.github.io/google-image-to-html-tool/)
 
 ## Features
 - Convert Google Drive image URLs into raw image URLs.
